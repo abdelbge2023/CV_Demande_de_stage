@@ -40,23 +40,24 @@
             position: relative;
         }
         
-        /* Image de fond */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://raw.githubusercontent.com/abdelbge2023/CV_Demande_de_stage/refs/heads/main/1762516761945.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            opacity: 0.1; /* Réduction de l'opacité pour un effet subtil */
-            z-index: -1;
-            filter: grayscale(30%) blur(1px);
-        }
+        /* Image de fond avec votre lien GitHub */
+        /* Image de fond avec votre lien GitHub */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://raw.githubusercontent.com/abdelbge2023/CV_Demande_de_stage/main/1762516761945.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.08; /* Opacité réduite pour un effet subtil */
+    z-index: -1;
+    filter: grayscale(20%) blur(0.5px);
+}
         
         /* Overlay pour améliorer la lisibilité */
         body::after {
@@ -66,7 +67,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(240, 249, 255, 0.9) 0%, rgba(224, 242, 254, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(240, 249, 255, 0.92) 0%, rgba(224, 242, 254, 0.92) 100%);
             z-index: -1;
         }
         
@@ -111,7 +112,7 @@
         }
         
         .profile-img-container {
-            width: 180px; /* Taille réduite pour un meilleur équilibre */
+            width: 180px;
             height: 180px;
             margin: 0 auto 1.5rem;
             position: relative;
@@ -129,7 +130,7 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
             transition: var(--transition);
-            padding: 8px; /* Padding réduit pour l'image */
+            padding: 8px;
         }
         
         .profile-img:hover {
@@ -143,12 +144,12 @@
             height: 100%;
             object-fit: contain;
             border-radius: 50%;
-            padding: 10px; /* Padding ajusté pour l'image */
+            padding: 10px;
             background: white;
         }
         
         .name-title h1 {
-            font-size: 2.5rem; /* Taille légèrement réduite */
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
             font-weight: 700;
             letter-spacing: -0.5px;
@@ -156,7 +157,7 @@
         }
         
         .name-title h2 {
-            font-size: 1.4rem; /* Taille légèrement réduite */
+            font-size: 1.4rem;
             font-weight: 400;
             opacity: 0.95;
             margin-bottom: 1.2rem;
@@ -1448,149 +1449,7 @@
                     </p>
                     
                     <div class="portfolio-container" id="videoPortfolio">
-                        <!-- Vidéo 1 - Administration Active Directory -->
-                        <div class="video-card" data-video-id="1">
-                            <div class="video-player">
-                                <img src="https://via.placeholder.com/350x200/1e3a8a/ffffff?text=Active+Directory+Demo" 
-                                     alt="Administration Active Directory" 
-                                     class="video-thumbnail">
-                                <div class="play-btn">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                            <div class="video-info">
-                                <h3 class="video-title">Administration Active Directory</h3>
-                                <p class="video-description">
-                                    Démonstration de la configuration et gestion d'Active Directory, création d'utilisateurs, groupes et politiques GPO.
-                                </p>
-                                <div class="video-tags">
-                                    <span class="video-tag">Windows Server</span>
-                                    <span class="video-tag">Active Directory</span>
-                                    <span class="video-tag">GPO</span>
-                                    <span class="video-tag">Administration</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Vidéo 2 - Virtualisation VMware -->
-                        <div class="video-card" data-video-id="2">
-                            <div class="video-player">
-                                <img src="https://via.placeholder.com/350x200/0ea5e9/ffffff?text=VMware+ESXi" 
-                                     alt="Virtualisation VMware" 
-                                     class="video-thumbnail">
-                                <div class="play-btn">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                            <div class="video-info">
-                                <h3 class="video-title">Virtualisation avec VMware ESXi</h3>
-                                <p class="video-description">
-                                    Configuration d'un environnement virtualisé, création de machines virtuelles et gestion des ressources.
-                                </p>
-                                <div class="video-tags">
-                                    <span class="video-tag">Virtualisation</span>
-                                    <span class="video-tag">VMware</span>
-                                    <span class="video-tag">ESXi</span>
-                                    <span class="video-tag">Serveurs</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Vidéo 3 - Sécurité Réseau -->
-                        <div class="video-card" data-video-id="3">
-                            <div class="video-player">
-                                <img src="https://via.placeholder.com/350x200/10b981/ffffff?text=S%C3%A9curit%C3%A9+R%C3%A9seau" 
-                                     alt="Sécurité Réseau" 
-                                     class="video-thumbnail">
-                                <div class="play-btn">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                            <div class="video-info">
-                                <h3 class="video-title">Configuration Sécurité Réseau</h3>
-                                <p class="video-description">
-                                    Mise en place de règles de pare-feu, segmentation réseau et sécurisation des accès distants.
-                                </p>
-                                <div class="video-tags">
-                                    <span class="video-tag">Sécurité</span>
-                                    <span class="video-tag">Réseau</span>
-                                    <span class="video-tag">Pare-feu</span>
-                                    <span class="video-tag">VPN</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Vidéo 4 - Scripting PowerShell -->
-                        <div class="video-card" data-video-id="4">
-                            <div class="video-player">
-                                <img src="https://via.placeholder.com/350x200/f59e0b/ffffff?text=PowerShell" 
-                                     alt="Scripting PowerShell" 
-                                     class="video-thumbnail">
-                                <div class="play-btn">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                            <div class="video-info">
-                                <h3 class="video-title">Automatisation avec PowerShell</h3>
-                                <p class="video-description">
-                                    Scripts PowerShell pour l'automatisation des tâches d'administration système.
-                                </p>
-                                <div class="video-tags">
-                                    <span class="video-tag">PowerShell</span>
-                                    <span class="video-tag">Scripting</span>
-                                    <span class="video-tag">Automatisation</span>
-                                    <span class="video-tag">Windows</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Vidéo 5 - Sauvegarde Veeam -->
-                        <div class="video-card" data-video-id="5">
-                            <div class="video-player">
-                                <img src="https://via.placeholder.com/350x200/8b5cf6/ffffff?text=Veeam+Backup" 
-                                     alt="Sauvegarde Veeam" 
-                                     class="video-thumbnail">
-                                <div class="play-btn">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                            <div class="video-info">
-                                <h3 class="video-title">Sauvegarde avec Veeam</h3>
-                                <p class="video-description">
-                                    Configuration d'une solution de sauvegarde et restauration avec Veeam Backup & Replication.
-                                </p>
-                                <div class="video-tags">
-                                    <span class="video-tag">Sauvegarde</span>
-                                    <span class="video-tag">Veeam</span>
-                                    <span class="video-tag">Restauration</span>
-                                    <span class="video-tag">PRA</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Vidéo 6 - Linux Administration -->
-                        <div class="video-card" data-video-id="6">
-                            <div class="video-player">
-                                <img src="https://via.placeholder.com/350x200/ef4444/ffffff?text=Linux+Admin" 
-                                     alt="Linux Administration" 
-                                     class="video-thumbnail">
-                                <div class="play-btn">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                            <div class="video-info">
-                                <h3 class="video-title">Administration Linux</h3>
-                                <p class="video-description">
-                                    Configuration de services Linux, gestion des utilisateurs et des permissions.
-                                </p>
-                                <div class="video-tags">
-                                    <span class="video-tag">Linux</span>
-                                    <span class="video-tag">Ubuntu</span>
-                                    <span class="video-tag">CentOS</span>
-                                    <span class="video-tag">Administration</span>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Les cartes vidéo seront générées dynamiquement par JavaScript -->
                     </div>
                     
                     <!-- Instructions pour ajouter des vidéos -->
@@ -2100,7 +1959,7 @@
             // Configuration EmailJS
             const emailjsConfig = {
                 service_id: "service_4ve8joa",
-                template_id: "template_axo0az3", // ⚠️ À REMPLACER AVEC VOTRE TEMPLATE ID
+                template_id: "template_xxxxxxxx", // ⚠️ À REMPLACER AVEC VOTRE TEMPLATE ID
                 user_id: "Tz5a7u_jFOL9lzel0"
             };
             
