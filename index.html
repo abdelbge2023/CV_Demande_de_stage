@@ -30,20 +30,44 @@
             box-sizing: border-box;
         }
         
-        /* Image de fond */
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.7;
             color: var(--dark-color);
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            background-attachment: fixed;
             overflow-x: hidden;
-            background: 
-                /* Image de fond VOTRE IMAGE */
-                url('https://raw.githubusercontent.com/abdelbge2023/CV_Demande_de_stage/main/1762516761945.jpg') center center / cover no-repeat fixed,
-                /* Overlay pour lisibilité */
-                linear-gradient(135deg, rgba(240, 249, 255, 0.85) 0%, rgba(224, 242, 254, 0.85) 100%);
+            position: relative;
+        }
+        
+        /* Image de fond */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://raw.githubusercontent.com/abdelbge2023/CV_Demande_de_stage/refs/heads/main/1762516761945.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            opacity: 0.1; /* Réduction de l'opacité pour un effet subtil */
+            z-index: -1;
+            filter: grayscale(30%) blur(1px);
+        }
+        
+        /* Overlay pour améliorer la lisibilité */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(240, 249, 255, 0.9) 0%, rgba(224, 242, 254, 0.9) 100%);
+            z-index: -1;
         }
         
         .container {
@@ -51,13 +75,14 @@
             margin: 0 auto;
             padding: 0 24px;
             position: relative;
+            z-index: 1;
         }
         
-        /* Header TRANSPARENT avec logo à GAUCHE */
+        /* Header */
         header {
-            background: linear-gradient(135deg, rgba(30, 58, 138, 0.7) 0%, rgba(30, 64, 175, 0.7) 100%);
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(30, 64, 175, 0.95) 100%);
             color: white;
-            padding: 2rem 0;
+            padding: 3.5rem 0;
             position: relative;
             overflow: hidden;
             border-bottom-left-radius: 30px;
@@ -66,18 +91,29 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
+        }
+        
         .header-content {
             position: relative;
             z-index: 2;
-            display: flex;
-            align-items: center;
-            gap: 2rem;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
         }
         
         .profile-img-container {
-            width: 120px;
-            height: 120px;
-            flex-shrink: 0;
+            width: 180px; /* Taille réduite pour un meilleur équilibre */
+            height: 180px;
+            margin: 0 auto 1.5rem;
             position: relative;
         }
         
@@ -85,20 +121,21 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            border: 3px solid rgba(255, 255, 255, 0.3);
+            border: 5px solid rgba(255, 255, 255, 0.3);
             background: white;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
             transition: var(--transition);
+            padding: 8px; /* Padding réduit pour l'image */
         }
         
         .profile-img:hover {
             transform: scale(1.05);
             border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
         }
         
         .profile-img img {
@@ -106,17 +143,12 @@
             height: 100%;
             object-fit: contain;
             border-radius: 50%;
-            padding: 8px;
+            padding: 10px; /* Padding ajusté pour l'image */
             background: white;
         }
         
-        .name-title {
-            flex: 1;
-            text-align: left;
-        }
-        
         .name-title h1 {
-            font-size: 2rem;
+            font-size: 2.5rem; /* Taille légèrement réduite */
             margin-bottom: 0.5rem;
             font-weight: 700;
             letter-spacing: -0.5px;
@@ -124,64 +156,66 @@
         }
         
         .name-title h2 {
-            font-size: 1.2rem;
+            font-size: 1.4rem; /* Taille légèrement réduite */
             font-weight: 400;
             opacity: 0.95;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1.2rem;
         }
         
         .tagline {
-            font-size: 0.95rem;
-            line-height: 1.5;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 1.8rem;
+            line-height: 1.6;
             opacity: 0.9;
-            margin-bottom: 1rem;
-            max-width: 600px;
+            padding: 0 15px;
         }
         
         .header-actions {
             display: flex;
-            gap: 1rem;
+            justify-content: center;
+            gap: 1.5rem;
             flex-wrap: wrap;
+            margin-top: 1.8rem;
         }
         
         .availability-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.15);
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
-            padding: 0.6rem 1.2rem;
+            padding: 0.8rem 2rem;
             border-radius: 50px;
             font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             transition: var(--transition);
-            font-size: 0.9rem;
         }
         
         .availability-badge:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
         .download-cv-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
             color: white;
-            padding: 0.6rem 1.2rem;
+            padding: 0.8rem 2rem;
             border-radius: 50px;
             font-weight: 500;
             text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             transition: var(--transition);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-            font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
         }
         
         .download-cv-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.5);
             background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
         }
         
@@ -190,7 +224,7 @@
             background: rgba(255, 255, 255, 0.95);
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
-            margin: 2rem auto;
+            margin: 3rem auto;
             max-width: 1200px;
             overflow: hidden;
             border: 1px solid rgba(226, 232, 240, 0.9);
@@ -210,11 +244,11 @@
         }
         
         .tab-btn {
-            padding: 1.2rem 1.5rem;
+            padding: 1.5rem 2rem;
             background: none;
             border: none;
             font-family: 'Inter', sans-serif;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--dark-color);
             cursor: pointer;
@@ -222,7 +256,7 @@
             white-space: nowrap;
             position: relative;
             flex: 1;
-            min-width: 120px;
+            min-width: 140px;
             text-align: center;
         }
         
@@ -247,8 +281,8 @@
         }
         
         .tab-btn i {
-            margin-right: 8px;
-            font-size: 1.1rem;
+            margin-right: 10px;
+            font-size: 1.2rem;
         }
         
         .tabs-content {
@@ -257,7 +291,7 @@
         
         .tab-pane {
             display: none;
-            padding: 2.5rem;
+            padding: 3rem;
             animation: fadeIn 0.5s ease-out;
         }
         
@@ -1046,29 +1080,14 @@
         }
         
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 1.5rem;
-            }
-            
-            .name-title {
-                text-align: center;
-            }
-            
-            .profile-img-container {
-                width: 140px;
-                height: 140px;
-            }
-            
             .tabs-header {
                 flex-wrap: wrap;
             }
             
             .tab-btn {
-                min-width: 110px;
-                padding: 1rem 1.2rem;
-                font-size: 0.9rem;
+                min-width: 120px;
+                padding: 1.2rem 1.5rem;
+                font-size: 1rem;
             }
             
             .tab-pane {
@@ -1076,11 +1095,11 @@
             }
             
             .name-title h1 {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
             }
             
             .name-title h2 {
-                font-size: 1.1rem;
+                font-size: 1.3rem;
             }
             
             .section-title {
@@ -1117,18 +1136,18 @@
         
         @media (max-width: 480px) {
             .profile-img-container {
-                width: 120px;
-                height: 120px;
+                width: 160px;
+                height: 160px;
             }
             
             .name-title h1 {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
             
             .tab-btn {
-                min-width: 90px;
-                padding: 0.8rem 1rem;
-                font-size: 0.85rem;
+                min-width: 100px;
+                padding: 1rem;
+                font-size: 0.9rem;
             }
             
             .tab-pane {
@@ -1155,7 +1174,7 @@
     </style>
 </head>
 <body>
-    <!-- Header avec logo à GAUCHE et TRANSPARENT -->
+    <!-- Header avec VOTRE LOGO PERSONNEL -->
     <header>
         <div class="container header-content">
             <div class="profile-img-container">
@@ -1413,220 +1432,183 @@
                 </div>
                 
                 <!-- Portfolio Tab -->
-<div class="tab-pane" id="portfolio">
-    <div class="section-header">
-        <div class="section-icon">
-            <i class="fas fa-video"></i>
-        </div>
-        <div>
-            <h2 class="section-title">Portfolio Vidéo</h2>
-            <p class="section-subtitle">Démonstrations de mes compétences techniques</p>
-        </div>
-    </div>
-    
-    <p style="margin-bottom: 2rem; color: var(--dark-color); opacity: 0.9;">
-        Voici mes démonstrations techniques qui illustrent mes compétences en administration d'infrastructures sécurisées. Ces réalisations montrent mon expertise pratique.
-    </p>
-    
-    <div class="portfolio-container">
-        <!-- Projet 1 -->
-        <div class="video-card">
-            <div class="video-player">
-                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=350&h=200&q=80" 
-                     alt="Administration Active Directory" 
-                     class="video-thumbnail">
-                <div class="play-btn">
-                    <i class="fas fa-play"></i>
+                <div class="tab-pane" id="portfolio">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div>
+                            <h2 class="section-title">Portfolio Vidéo</h2>
+                            <p class="section-subtitle">Démonstrations de mes compétences techniques</p>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-bottom: 2rem; color: var(--dark-color); opacity: 0.9;">
+                        Découvrez mes démonstrations techniques et projets qui illustrent mes compétences en administration d'infrastructures sécurisées. Ces vidéos montrent mes réalisations pratiques dans différents domaines techniques.
+                    </p>
+                    
+                    <div class="portfolio-container" id="videoPortfolio">
+                        <!-- Vidéo 1 - Administration Active Directory -->
+                        <div class="video-card" data-video-id="1">
+                            <div class="video-player">
+                                <img src="https://via.placeholder.com/350x200/1e3a8a/ffffff?text=Active+Directory+Demo" 
+                                     alt="Administration Active Directory" 
+                                     class="video-thumbnail">
+                                <div class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Administration Active Directory</h3>
+                                <p class="video-description">
+                                    Démonstration de la configuration et gestion d'Active Directory, création d'utilisateurs, groupes et politiques GPO.
+                                </p>
+                                <div class="video-tags">
+                                    <span class="video-tag">Windows Server</span>
+                                    <span class="video-tag">Active Directory</span>
+                                    <span class="video-tag">GPO</span>
+                                    <span class="video-tag">Administration</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Vidéo 2 - Virtualisation VMware -->
+                        <div class="video-card" data-video-id="2">
+                            <div class="video-player">
+                                <img src="https://via.placeholder.com/350x200/0ea5e9/ffffff?text=VMware+ESXi" 
+                                     alt="Virtualisation VMware" 
+                                     class="video-thumbnail">
+                                <div class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Virtualisation avec VMware ESXi</h3>
+                                <p class="video-description">
+                                    Configuration d'un environnement virtualisé, création de machines virtuelles et gestion des ressources.
+                                </p>
+                                <div class="video-tags">
+                                    <span class="video-tag">Virtualisation</span>
+                                    <span class="video-tag">VMware</span>
+                                    <span class="video-tag">ESXi</span>
+                                    <span class="video-tag">Serveurs</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Vidéo 3 - Sécurité Réseau -->
+                        <div class="video-card" data-video-id="3">
+                            <div class="video-player">
+                                <img src="https://via.placeholder.com/350x200/10b981/ffffff?text=S%C3%A9curit%C3%A9+R%C3%A9seau" 
+                                     alt="Sécurité Réseau" 
+                                     class="video-thumbnail">
+                                <div class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Configuration Sécurité Réseau</h3>
+                                <p class="video-description">
+                                    Mise en place de règles de pare-feu, segmentation réseau et sécurisation des accès distants.
+                                </p>
+                                <div class="video-tags">
+                                    <span class="video-tag">Sécurité</span>
+                                    <span class="video-tag">Réseau</span>
+                                    <span class="video-tag">Pare-feu</span>
+                                    <span class="video-tag">VPN</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Vidéo 4 - Scripting PowerShell -->
+                        <div class="video-card" data-video-id="4">
+                            <div class="video-player">
+                                <img src="https://via.placeholder.com/350x200/f59e0b/ffffff?text=PowerShell" 
+                                     alt="Scripting PowerShell" 
+                                     class="video-thumbnail">
+                                <div class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Automatisation avec PowerShell</h3>
+                                <p class="video-description">
+                                    Scripts PowerShell pour l'automatisation des tâches d'administration système.
+                                </p>
+                                <div class="video-tags">
+                                    <span class="video-tag">PowerShell</span>
+                                    <span class="video-tag">Scripting</span>
+                                    <span class="video-tag">Automatisation</span>
+                                    <span class="video-tag">Windows</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Vidéo 5 - Sauvegarde Veeam -->
+                        <div class="video-card" data-video-id="5">
+                            <div class="video-player">
+                                <img src="https://via.placeholder.com/350x200/8b5cf6/ffffff?text=Veeam+Backup" 
+                                     alt="Sauvegarde Veeam" 
+                                     class="video-thumbnail">
+                                <div class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Sauvegarde avec Veeam</h3>
+                                <p class="video-description">
+                                    Configuration d'une solution de sauvegarde et restauration avec Veeam Backup & Replication.
+                                </p>
+                                <div class="video-tags">
+                                    <span class="video-tag">Sauvegarde</span>
+                                    <span class="video-tag">Veeam</span>
+                                    <span class="video-tag">Restauration</span>
+                                    <span class="video-tag">PRA</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Vidéo 6 - Linux Administration -->
+                        <div class="video-card" data-video-id="6">
+                            <div class="video-player">
+                                <img src="https://via.placeholder.com/350x200/ef4444/ffffff?text=Linux+Admin" 
+                                     alt="Linux Administration" 
+                                     class="video-thumbnail">
+                                <div class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Administration Linux</h3>
+                                <p class="video-description">
+                                    Configuration de services Linux, gestion des utilisateurs et des permissions.
+                                </p>
+                                <div class="video-tags">
+                                    <span class="video-tag">Linux</span>
+                                    <span class="video-tag">Ubuntu</span>
+                                    <span class="video-tag">CentOS</span>
+                                    <span class="video-tag">Administration</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Instructions pour ajouter des vidéos -->
+                    <div class="instructions" style="background: #f0f9ff; padding: 1.5rem; border-radius: var(--border-radius); margin-top: 3rem; border-left: 4px solid var(--accent-color);">
+                        <h4 style="color: var(--primary-color); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-info-circle"></i> Comment ajouter vos propres vidéos ?
+                        </h4>
+                        <ol style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Téléversez vos vidéos sur GitHub dans votre dépôt</li>
+                            <li>Obtenez l'URL directe de chaque vidéo (format MP4)</li>
+                            <li>Modifiez le tableau <code>videos</code> dans le JavaScript ci-dessous</li>
+                            <li>Ajoutez vos propres images en remplaçant les placeholders</li>
+                        </ol>
+                        <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                            <strong>Conseil :</strong> Utilisez des vignettes personnalisées pour chaque vidéo (taille recommandée : 350x200 pixels)
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="video-info">
-                <h3 class="video-title">Configuration Active Directory</h3>
-                <p class="video-description">
-                    Déploiement et sécurisation d'un domaine Active Directory avec politiques de groupe (GPO).
-                </p>
-                <div class="video-tags">
-                    <span class="video-tag">Windows Server</span>
-                    <span class="video-tag">Active Directory</span>
-                    <span class="video-tag">Sécurité</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Projet 2 -->
-        <div class="video-card">
-            <div class="video-player">
-                <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=350&h=200&q=80" 
-                     alt="Virtualisation VMware" 
-                     class="video-thumbnail">
-                <div class="play-btn">
-                    <i class="fas fa-play"></i>
-                </div>
-            </div>
-            <div class="video-info">
-                <h3 class="video-title">Environnement Virtualisé</h3>
-                <p class="video-description">
-                    Infrastructure VMware ESXi avec gestion des ressources et haute disponibilité.
-                </p>
-                <div class="video-tags">
-                    <span class="video-tag">VMware</span>
-                    <span class="video-tag">Virtualisation</span>
-                    <span class="video-tag">ESXi</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Projet 3 -->
-        <div class="video-card">
-            <div class="video-player">
-                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=350&h=200&q=80" 
-                     alt="Sécurité Réseau" 
-                     class="video-thumbnail">
-                <div class="play-btn">
-                    <i class="fas fa-play"></i>
-                </div>
-            </div>
-            <div class="video-info">
-                <h3 class="video-title">Sécurisation Réseau</h3>
-                <p class="video-description">
-                    Mise en place de pare-feu, VPN et segmentation réseau pour sécuriser les accès.
-                </p>
-                <div class="video-tags">
-                    <span class="video-tag">Réseau</span>
-                    <span class="video-tag">Pare-feu</span>
-                    <span class="video-tag">VPN</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Projet 4 -->
-        <div class="video-card">
-            <div class="video-player">
-                <img src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?ixlib=rb-4.0.3&auto=format&fit=crop&w=350&h=200&q=80" 
-                     alt="Scripting PowerShell" 
-                     class="video-thumbnail">
-                <div class="play-btn">
-                    <i class="fas fa-play"></i>
-                </div>
-            </div>
-            <div class="video-info">
-                <h3 class="video-title">Automatisation PowerShell</h3>
-                <p class="video-description">
-                    Scripts d'automatisation pour la gestion des utilisateurs et des sauvegardes.
-                </p>
-                <div class="video-tags">
-                    <span class="video-tag">PowerShell</span>
-                    <span class="video-tag">Scripting</span>
-                    <span class="video-tag">Automatisation</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Projet 5 -->
-        <div class="video-card">
-            <div class="video-player">
-                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=350&h=200&q=80" 
-                     alt="Sauvegarde Veeam" 
-                     class="video-thumbnail">
-                <div class="play-btn">
-                    <i class="fas fa-play"></i>
-                </div>
-            </div>
-            <div class="video-info">
-                <h3 class="video-title">Solution de Sauvegarde</h3>
-                <p class="video-description">
-                    Configuration Veeam Backup & Replication avec plan de reprise d'activité.
-                </p>
-                <div class="video-tags">
-                    <span class="video-tag">Veeam</span>
-                    <span class="video-tag">Sauvegarde</span>
-                    <span class="video-tag">PRA</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Projet 6 -->
-        <div class="video-card">
-            <div class="video-player">
-                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=350&h=200&q=80" 
-                     alt="Administration Linux" 
-                     class="video-thumbnail">
-                <div class="play-btn">
-                    <i class="fas fa-play"></i>
-                </div>
-            </div>
-            <div class="video-info">
-                <h3 class="video-title">Services Linux</h3>
-                <p class="video-description">
-                    Configuration et sécurisation de services Linux (Apache, SSH, Nginx).
-                </p>
-                <div class="video-tags">
-                    <span class="video-tag">Linux</span>
-                    <span class="video-tag">Ubuntu</span>
-                    <span class="video-tag">Serveurs</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Section Projets Textuels -->
-    <div style="margin-top: 4rem;">
-        <h3 style="color: var(--primary-color); margin-bottom: 1.5rem; font-size: 1.5rem;">
-            <i class="fas fa-project-diagram"></i> Autres Projets Techniques
-        </h3>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;">
-            <!-- Projet 1 -->
-            <div style="background: var(--light-color); padding: 1.5rem; border-radius: var(--border-radius); border-left: 4px solid var(--accent-color);">
-                <h4 style="color: var(--primary-color); margin-bottom: 0.8rem;">
-                    <i class="fas fa-network-wired"></i> Infrastructure Datacenter
-                </h4>
-                <p style="color: var(--dark-color); font-size: 0.95rem; line-height: 1.6;">
-                    Conception et mise en œuvre d'une infrastructure sécurisée avec VLAN, contrôle d'accès et monitoring.
-                </p>
-            </div>
-            
-            <!-- Projet 2 -->
-            <div style="background: var(--light-color); padding: 1.5rem; border-radius: var(--border-radius); border-left: 4px solid var(--secondary-color);">
-                <h4 style="color: var(--primary-color); margin-bottom: 0.8rem;">
-                    <i class="fas fa-shield-alt"></i> Audit de Sécurité
-                </h4>
-                <p style="color: var(--dark-color); font-size: 0.95rem; line-height: 1.6;">
-                    Réalisation d'audit sécurité selon la norme ISO 27001 et recommandations d'amélioration.
-                </p>
-            </div>
-            
-            <!-- Projet 3 -->
-            <div style="background: var(--light-color); padding: 1.5rem; border-radius: var(--border-radius); border-left: 4px solid var(--success-color);">
-                <h4 style="color: var(--primary-color); margin-bottom: 0.8rem;">
-                    <i class="fas fa-cloud"></i> Migration Cloud
-                </h4>
-                <p style="color: var(--dark-color); font-size: 0.95rem; line-height: 1.6;">
-                    Migration sécurisée de services locaux vers une infrastructure cloud hybride.
-                </p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Note pour vidéos futures -->
-    <div class="instructions" style="background: #f0f9ff; padding: 1.5rem; border-radius: var(--border-radius); margin-top: 3rem; border-left: 4px solid var(--accent-color);">
-        <h4 style="color: var(--primary-color); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
-            <i class="fas fa-info-circle"></i> Portfolio en développement
-        </h4>
-        <p style="color: #666; line-height: 1.6;">
-            Mon portfolio vidéo est actuellement en cours de développement. Je prépare des démonstrations techniques détaillées de mes compétences en :
-        </p>
-        <ul style="color: #666; margin-top: 0.8rem; padding-left: 1.5rem; line-height: 1.6;">
-            <li>Administration Windows Server & Active Directory</li>
-            <li>Virtualisation avec VMware et Proxmox</li>
-            <li>Sécurisation des infrastructures réseau</li>
-            <li>Automatisation avec PowerShell et Bash</li>
-            <li>Gestion des sauvegardes et PRA</li>
-        </ul>
-        <p style="color: #666; margin-top: 1rem; font-size: 0.9rem;">
-            <strong>Disponible prochainement :</strong> Liens vers mes démonstrations vidéo sur GitHub.
-        </p>
-    </div>
-</div>
                 
                 <!-- Contact Tab -->
                 <div class="tab-pane" id="contact">
@@ -1793,6 +1775,24 @@
         </div>
     </div>
     
+    <!-- Modal pour afficher les vidéos -->
+    <div class="video-modal" id="videoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalVideoTitle">Titre de la vidéo</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <video class="modal-video" id="modalVideo" controls>
+                    Votre navigateur ne supporte pas la lecture de vidéos.
+                </video>
+                <p class="modal-description" id="modalVideoDescription">
+                    Description de la vidéo...
+                </p>
+            </div>
+        </div>
+    </div>
+    
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1814,98 +1814,410 @@
         </div>
     </footer>
 
-    <!-- SCRIPT CORRIGÉ POUR LE MENU -->
     <script>
-        // Initialisation EmailJS
+        // Configuration EmailJS
         (function() {
             emailjs.init("Tz5a7u_jFOL9lzel0");
+            console.log("EmailJS initialisé avec succès");
         })();
         
-        // GESTION DU MENU - CORRECTION
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Page chargée - initialisation du menu');
-            
-            // Sélection des éléments
-            const tabButtons = document.querySelectorAll('.tab-btn');
-            const tabPanes = document.querySelectorAll('.tab-pane');
-            
-            // Fonction pour changer d'onglet
-            function switchTab(tabId) {
-                console.log('Changement vers l\'onglet:', tabId);
-                
-                // Retirer la classe active de tous les boutons et panneaux
-                tabButtons.forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                
-                tabPanes.forEach(pane => {
-                    pane.classList.remove('active');
-                });
-                
-                // Ajouter la classe active au bouton et au panneau correspondants
-                const activeButton = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
-                const activePane = document.getElementById(tabId);
-                
-                if (activeButton && activePane) {
-                    activeButton.classList.add('active');
-                    activePane.classList.add('active');
-                    
-                    // Sauvegarder l'onglet actif
-                    localStorage.setItem('activeTab', tabId);
-                    
-                    // Mettre à jour l'URL
-                    history.pushState(null, null, `#${tabId}`);
-                }
+        // ================================
+        // CONFIGURATION DES VIDÉOS
+        // ================================
+        // AJOUTEZ VOS VRAIES VIDÉOS ICI
+        const videos = [
+            {
+                id: 1,
+                title: "Administration Active Directory",
+                description: "Démonstration complète de la configuration et gestion d'Active Directory : création d'utilisateurs, groupes organisationnels, politiques de groupe (GPO) et sécurisation des accès.",
+                videoUrl: "https://votre-repo-github.com/videos/active-directory-demo.mp4", // REMPLACEZ PAR VOTRE URL
+                thumbnail: "https://via.placeholder.com/350x200/1e3a8a/ffffff?text=Active+Directory+Demo",
+                tags: ["Windows Server", "Active Directory", "GPO", "Administration", "Sécurité"]
+            },
+            {
+                id: 2,
+                title: "Virtualisation avec VMware ESXi",
+                description: "Configuration d'un environnement virtualisé VMware ESXi : installation, création de machines virtuelles, allocation des ressources et gestion des snapshots.",
+                videoUrl: "https://votre-repo-github.com/videos/vmware-esxi-demo.mp4", // REMPLACEZ PAR VOTRE URL
+                thumbnail: "https://via.placeholder.com/350x200/0ea5e9/ffffff?text=VMware+ESXi",
+                tags: ["Virtualisation", "VMware", "ESXi", "Serveurs", "Infrastructure"]
+            },
+            {
+                id: 3,
+                title: "Configuration Sécurité Réseau",
+                description: "Mise en place de règles de pare-feu avancées, segmentation réseau VLAN, configuration VPN IPSec et sécurisation des accès distants.",
+                videoUrl: "https://votre-repo-github.com/videos/securite-reseau-demo.mp4", // REMPLACEZ PAR VOTRE URL
+                thumbnail: "https://via.placeholder.com/350x200/10b981/ffffff?text=S%C3%A9curit%C3%A9+R%C3%A9seau",
+                tags: ["Sécurité", "Réseau", "Pare-feu", "VPN", "Segmentation"]
+            },
+            {
+                id: 4,
+                title: "Automatisation avec PowerShell",
+                description: "Scripts PowerShell pour automatiser les tâches d'administration : création d'utilisateurs, génération de rapports, monitoring système et déploiement logiciel.",
+                videoUrl: "https://votre-repo-github.com/videos/powershell-automation.mp4", // REMPLACEZ PAR VOTRE URL
+                thumbnail: "https://via.placeholder.com/350x200/f59e0b/ffffff?text=PowerShell",
+                tags: ["PowerShell", "Scripting", "Automatisation", "Windows", "Administration"]
+            },
+            {
+                id: 5,
+                title: "Sauvegarde avec Veeam",
+                description: "Configuration complète d'une solution de sauvegarde Veeam : planification des sauvegardes, restauration de fichiers et machines virtuelles, tests de PRA.",
+                videoUrl: "https://votre-repo-github.com/videos/veeam-backup-demo.mp4", // REMPLACEZ PAR VOTRE URL
+                thumbnail: "https://via.placeholder.com/350x200/8b5cf6/ffffff?text=Veeam+Backup",
+                tags: ["Sauvegarde", "Veeam", "Restauration", "PRA", "Sécurité"]
+            },
+            {
+                id: 6,
+                title: "Administration Linux",
+                description: "Configuration de services Linux : Apache, Nginx, SSH, gestion des utilisateurs, permissions et sécurité sous CentOS/Ubuntu.",
+                videoUrl: "https://votre-repo-github.com/videos/linux-admin-demo.mp4", // REMPLACEZ PAR VOTRE URL
+                thumbnail: "https://via.placeholder.com/350x200/ef4444/ffffff?text=Linux+Admin",
+                tags: ["Linux", "Ubuntu", "CentOS", "Administration", "Serveurs"]
             }
+            // AJOUTEZ D'AUTRES VIDÉOS EN COPIANT LE FORMAT CI-DESSUS
+        ];
+        
+        // ================================
+        // GESTION DU PORTFOLIO VIDÉO
+        // ================================
+        
+        // Éléments DOM
+        const videoModal = document.getElementById('videoModal');
+        const modalVideo = document.getElementById('modalVideo');
+        const modalVideoTitle = document.getElementById('modalVideoTitle');
+        const modalVideoDescription = document.getElementById('modalVideoDescription');
+        const closeModal = document.getElementById('closeModal');
+        const videoPortfolio = document.getElementById('videoPortfolio');
+        
+        // Générer dynamiquement les cartes vidéo
+        function generateVideoCards() {
+            videoPortfolio.innerHTML = '';
             
-            // Ajouter les événements aux boutons
-            tabButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const tabId = this.getAttribute('data-tab');
-                    switchTab(tabId);
-                });
+            videos.forEach(video => {
+                const videoCard = document.createElement('div');
+                videoCard.className = 'video-card';
+                videoCard.setAttribute('data-video-id', video.id);
+                
+                videoCard.innerHTML = `
+                    <div class="video-player">
+                        <img src="${video.thumbnail}" 
+                             alt="${video.title}" 
+                             class="video-thumbnail">
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">${video.title}</h3>
+                        <p class="video-description">${video.description}</p>
+                        <div class="video-tags">
+                            ${video.tags.map(tag => `<span class="video-tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+                
+                videoPortfolio.appendChild(videoCard);
             });
             
-            // Vérifier l'URL au chargement
+            // Ajouter les événements après création
+            setupVideoEvents();
+        }
+        
+        // Configurer les événements vidéo
+        function setupVideoEvents() {
+            document.querySelectorAll('.video-card').forEach(card => {
+                const playBtn = card.querySelector('.play-btn');
+                const videoId = parseInt(card.getAttribute('data-video-id'));
+                
+                playBtn.addEventListener('click', () => {
+                    openVideoModal(videoId);
+                });
+            });
+        }
+        
+        // Ouvrir la modal vidéo
+        function openVideoModal(videoId) {
+            const video = videos.find(v => v.id === videoId);
+            
+            if (video) {
+                modalVideoTitle.textContent = video.title;
+                modalVideoDescription.textContent = video.description;
+                modalVideo.src = video.videoUrl;
+                
+                videoModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Empêcher le scroll
+                
+                // Jouer la vidéo automatiquement
+                setTimeout(() => {
+                    modalVideo.play().catch(e => console.log("Auto-play bloqué:", e));
+                }, 300);
+            }
+        }
+        
+        // Fermer la modal
+        closeModal.addEventListener('click', () => {
+            videoModal.classList.remove('active');
+            modalVideo.pause();
+            modalVideo.currentTime = 0;
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Fermer la modal en cliquant à l'extérieur
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                videoModal.classList.remove('active');
+                modalVideo.pause();
+                modalVideo.currentTime = 0;
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Fermer avec la touche Échap
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+                videoModal.classList.remove('active');
+                modalVideo.pause();
+                modalVideo.currentTime = 0;
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Tab Navigation System
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+        
+        // Function to switch tabs
+        function switchTab(tabId) {
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanes.forEach(pane => pane.classList.remove('active'));
+            
+            const activeBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+            const activePane = document.getElementById(tabId);
+            
+            if (activeBtn && activePane) {
+                activeBtn.classList.add('active');
+                activePane.classList.add('active');
+                
+                sessionStorage.setItem('activeTab', tabId);
+                history.replaceState(null, null, `#${tabId}`);
+            }
+        }
+        
+        // Add click event to tab buttons
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                switchTab(tabId);
+            });
+        });
+        
+        // Check URL hash on load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Générer les cartes vidéo
+            generateVideoCards();
+            
             const hash = window.location.hash.substring(1);
-            const savedTab = localStorage.getItem('activeTab');
+            const savedTab = sessionStorage.getItem('activeTab');
             
             if (hash && document.getElementById(hash)) {
                 switchTab(hash);
             } else if (savedTab && document.getElementById(savedTab)) {
                 switchTab(savedTab);
             } else {
-                // Par défaut, activer le premier onglet
                 switchTab('about');
             }
+        });
+        
+        // Fonction pour collecter les options sélectionnées
+        function collectOptions() {
+            const options = [];
+            const optionNames = {
+                'opt-cv': 'CV complet',
+                'opt-portfolio': 'Accès au portfolio',
+                'opt-certifications': 'Copies de certifications',
+                'opt-references': 'Références professionnelles',
+                'opt-disponibilite': 'Disponibilités',
+                'opt-projets': 'Détails de mes projets'
+            };
             
-            // Gestion des liens du footer
-            document.querySelectorAll('.footer-links a').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const tabId = this.getAttribute('data-tab');
-                    if (tabId) {
-                        switchTab(tabId);
-                        // Scroller vers le haut des onglets
-                        document.querySelector('.tabs-container').scrollIntoView({ 
-                            behavior: 'smooth'
-                        });
-                    }
-                });
+            document.querySelectorAll('.customization-options input[type="checkbox"]:checked').forEach(checkbox => {
+                if (optionNames[checkbox.id]) {
+                    options.push(optionNames[checkbox.id]);
+                }
             });
             
-            // Gestion de l'historique navigateur
-            window.addEventListener('popstate', function() {
-                const hash = window.location.hash.substring(1);
-                if (hash && document.getElementById(hash)) {
-                    switchTab(hash);
+            return options.length > 0 ? options.join(', ') : 'Aucune option sélectionnée';
+        }
+        
+        // Fonction pour afficher les messages du formulaire
+        function showMessage(type, text) {
+            const formMessage = document.getElementById('form-message');
+            formMessage.innerHTML = `
+                <div class="alert alert-${type}">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                    <span>${text}</span>
+                </div>
+            `;
+            formMessage.style.display = 'block';
+            
+            formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            if (type === 'success') {
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            }
+        }
+        
+        // Gérer la soumission du formulaire avec EmailJS
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            
+            // Collecter les données du formulaire
+            const formData = {
+                name: document.getElementById('name').value,
+                company: document.getElementById('company').value || 'Non spécifié',
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value || 'Non spécifié',
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+                selected_options: collectOptions(),
+                date: new Date().toLocaleString('fr-FR')
+            };
+            
+            // Validation des champs requis
+            if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+                showMessage('error', 'Veuillez remplir tous les champs obligatoires (*)');
+                return;
+            }
+            
+            // Désactiver le bouton pendant l'envoi
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+            
+            // Configuration EmailJS
+            const emailjsConfig = {
+                service_id: "service_4ve8joa",
+                template_id: "template_axo0az3", // ⚠️ À REMPLACER AVEC VOTRE TEMPLATE ID
+                user_id: "Tz5a7u_jFOL9lzel0"
+            };
+            
+            // Envoyer l'email via EmailJS
+            emailjs.send(emailjsConfig.service_id, emailjsConfig.template_id, formData)
+                .then(function(response) {
+                    console.log('SUCCÈS!', response.status, response.text);
+                    showMessage('success', 'Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.');
+                    
+                    // Réinitialiser le formulaire
+                    document.getElementById('contactForm').reset();
+                    
+                    // Réinitialiser les cases à cocher
+                    document.getElementById('opt-cv').checked = true;
+                    document.getElementById('opt-disponibilite').checked = true;
+                    document.getElementById('opt-portfolio').checked = false;
+                    document.getElementById('opt-certifications').checked = false;
+                    document.getElementById('opt-references').checked = false;
+                    document.getElementById('opt-projets').checked = false;
+                })
+                .catch(function(error) {
+                    console.error('ÉCHEC...', error);
+                    showMessage('error', 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer.');
+                    
+                    // Alternative: mailto
+                    const mailtoBody = `
+Nom: ${formData.name}
+Entreprise: ${formData.company}
+Email: ${formData.email}
+Téléphone: ${formData.phone}
+Sujet: ${formData.subject}
+
+Message:
+${formData.message}
+
+Options: ${formData.selected_options}
+                    `;
+                    
+                    const mailtoUrl = `mailto:abdelbge2022@gmail.com?subject=${encodeURIComponent('Contact CV: ' + formData.subject)}&body=${encodeURIComponent(mailtoBody)}`;
+                    
+                    showMessage('info', `Problème technique. <a href="${mailtoUrl}" style="color: var(--primary-color); text-decoration: underline;">Cliquez ici pour m'envoyer un email directement</a>.`);
+                })
+                .finally(function() {
+                    // Réactiver le bouton
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer le message';
+                });
+        });
+        
+        // Footer links to switch tabs
+        document.querySelectorAll('.footer-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const tabId = this.getAttribute('data-tab');
+                if (tabId) {
+                    switchTab(tabId);
+                    document.querySelector('.tabs-container').scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
         
-        // Le reste du JavaScript (EmailJS, portfolio vidéo, etc.) reste identique
-        // ... (copiez le reste du JavaScript précédent ici)
+        // Animation on scroll for tab panes
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
         
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all tab panes for animation
+        tabPanes.forEach(pane => {
+            pane.style.opacity = '0';
+            pane.style.transform = 'translateY(30px)';
+            pane.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(pane);
+        });
+        
+        // Auto-populate subject if coming from a specific context
+        const urlParams = new URLSearchParams(window.location.search);
+        const context = urlParams.get('context');
+        
+        if (context) {
+            const subjectMap = {
+                'stage': 'Proposition de stage',
+                'emploi': 'Offre d\'emploi',
+                'collaboration': 'Proposition de collaboration'
+            };
+            
+            if (subjectMap[context]) {
+                setTimeout(() => {
+                    switchTab('contact');
+                    const subjectSelect = document.getElementById('subject');
+                    if (subjectSelect) {
+                        subjectSelect.value = context;
+                    }
+                }, 100);
+            }
+        }
+        
+        // Test EmailJS connection
+        window.addEventListener('load', function() {
+            if (typeof emailjs !== 'undefined') {
+                console.log('EmailJS est chargé et prêt');
+            } else {
+                console.error('EmailJS n\'est pas chargé');
+            }
+        });
     </script>
 </body>
 </html>
