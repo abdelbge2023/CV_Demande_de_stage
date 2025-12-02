@@ -1,0 +1,2223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdelhadi EL AZHARI AMAZZALE - Administrateur Infrastructures Sécurisées</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --primary-dark: #1e40af;
+            --secondary-color: #0ea5e9;
+            --accent-color: #3b82f6;
+            --light-color: #f8fafc;
+            --dark-color: #1e293b;
+            --gray-color: #e2e8f0;
+            --success-color: #10b981;
+            --error-color: #ef4444;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --box-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--dark-color);
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Image de fond */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('1762516761945.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            opacity: 0.1; /* Réduction de l'opacité pour un effet subtil */
+            z-index: -1;
+            filter: grayscale(30%) blur(1px);
+        }
+        
+        /* Overlay pour améliorer la lisibilité */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(240, 249, 255, 0.9) 0%, rgba(224, 242, 254, 0.9) 100%);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(30, 64, 175, 0.95) 100%);
+            color: white;
+            padding: 3.5rem 0;
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .profile-img-container {
+            width: 180px; /* Taille réduite pour un meilleur équilibre */
+            height: 180px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: var(--transition);
+            padding: 8px; /* Padding réduit pour l'image */
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+        }
+        
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            padding: 10px; /* Padding ajusté pour l'image */
+            background: white;
+        }
+        
+        .name-title h1 {
+            font-size: 2.5rem; /* Taille légèrement réduite */
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .name-title h2 {
+            font-size: 1.4rem; /* Taille légèrement réduite */
+            font-weight: 400;
+            opacity: 0.95;
+            margin-bottom: 1.2rem;
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 1.8rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            padding: 0 15px;
+        }
+        
+        .header-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1.8rem;
+        }
+        
+        .availability-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: var(--transition);
+        }
+        
+        .availability-badge:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .download-cv-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+        
+        .download-cv-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.5);
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+        }
+        
+        /* Navigation Tabs */
+        .tabs-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin: 3rem auto;
+            max-width: 1200px;
+            overflow: hidden;
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        .tabs-header {
+            display: flex;
+            background: rgba(248, 250, 252, 0.95);
+            border-bottom: 2px solid var(--gray-color);
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        
+        .tabs-header::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .tab-btn {
+            padding: 1.5rem 2rem;
+            background: none;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            position: relative;
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+        }
+        
+        .tab-btn:hover {
+            background: rgba(59, 130, 246, 0.08);
+            color: var(--accent-color);
+        }
+        
+        .tab-btn.active {
+            color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+        }
+        
+        .tab-btn i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .tabs-content {
+            padding: 0;
+        }
+        
+        .tab-pane {
+            display: none;
+            padding: 3rem;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .tab-pane.active {
+            display: block;
+        }
+        
+        /* Portfolio Section */
+        .portfolio-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .video-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .video-player {
+            width: 100%;
+            height: 200px;
+            background: #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .video-player video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .video-thumbnail:hover {
+            transform: scale(1.05);
+        }
+        
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 2;
+        }
+        
+        .play-btn:hover {
+            background: white;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .play-btn i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-left: 5px;
+        }
+        
+        .video-info {
+            padding: 1.5rem;
+        }
+        
+        .video-title {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .video-description {
+            color: var(--dark-color);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .video-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .video-tag {
+            background: var(--light-color);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        /* Modal Video */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .video-modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            width: 90%;
+            max-width: 900px;
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .modal-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .close-modal:hover {
+            color: var(--secondary-color);
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        .modal-video {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-description {
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        /* Tab Content */
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--gray-color);
+        }
+        
+        .section-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .section-subtitle {
+            color: var(--dark-color);
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-top: 0.3rem;
+        }
+        
+        /* About Tab */
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .qualities {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border-left: 5px solid var(--accent-color);
+        }
+        
+        .qualities h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .qualities-list {
+            list-style: none;
+        }
+        
+        .qualities-list li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .qualities-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .qualities-list i {
+            color: var(--success-color);
+        }
+        
+        /* Skills Tab */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border-top: 5px solid var(--accent-color);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-category h3 i {
+            color: var(--accent-color);
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.8rem;
+            position: relative;
+        }
+        
+        .skill-list li:before {
+            content: '▸';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Experience Tab */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--accent-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            margin-bottom: 2.5rem;
+            position: relative;
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.1rem;
+            top: 24px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            border: 4px solid white;
+            box-shadow: 0 0 0 3px var(--accent-color);
+        }
+        
+        .timeline-date {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .timeline-content h4 {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        .timeline-content p {
+            color: var(--dark-color);
+            opacity: 0.9;
+        }
+        
+        /* Education Tab */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .education-card {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border-top: 5px solid var(--accent-color);
+            transition: var(--transition);
+        }
+        
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .education-date {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .education-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .education-card h4 {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Contact Tab */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .contact-card {
+            background: var(--light-color);
+            padding: 1.8rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-details h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .contact-details p {
+            color: var(--dark-color);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* Contact Form */
+        .form-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        
+        .form-container h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-container h3 i {
+            color: var(--accent-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 1px solid var(--gray-color);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Message d'alerte */
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .alert-success {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+        
+        .alert-error {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+        
+        .alert-info {
+            background-color: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #bfdbfe;
+        }
+        
+        /* Social Links */
+        .social-section {
+            margin-top: 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--light-color);
+            color: var(--primary-color);
+            border-radius: 12px;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            text-decoration: none;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            color: white;
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        /* Customization Panel */
+        .customization-panel {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-top: 2rem;
+            border: 1px dashed var(--accent-color);
+        }
+        
+        .customization-panel h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .customization-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .custom-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .custom-option input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .custom-option label {
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(30, 41, 59, 0.95);
+            color: white;
+            padding: 3rem 0;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            margin-top: 3rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .copyright {
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--secondary-color);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content, .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-container, .portfolio-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-player {
+                height: 180px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .tabs-header {
+                flex-wrap: wrap;
+            }
+            
+            .tab-btn {
+                min-width: 120px;
+                padding: 1.2rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .tab-pane {
+                padding: 2rem;
+            }
+            
+            .name-title h1 {
+                font-size: 2.2rem;
+            }
+            
+            .name-title h2 {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .timeline {
+                padding-left: 2rem;
+            }
+            
+            .timeline::before {
+                left: 9px;
+            }
+            
+            .timeline-item::before {
+                left: -2.1rem;
+            }
+            
+            .header-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .availability-badge, .download-cv-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .video-player {
+                height: 160px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .profile-img-container {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .name-title h1 {
+                font-size: 1.8rem;
+            }
+            
+            .tab-btn {
+                min-width: 100px;
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .tab-pane {
+                padding: 1.5rem;
+            }
+            
+            .skills-container, .portfolio-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .video-player {
+                height: 150px;
+            }
+            
+            .modal-content {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header avec VOTRE LOGO PERSONNEL -->
+    <header>
+        <div class="container header-content">
+            <div class="profile-img-container">
+                <div class="profile-img">
+                    <img src="https://raw.githubusercontent.com/abdelbge2023/CV_Demande_de_stage/7730819fea2134584654eca4cce1a06b723dbb71/f1.jpg" 
+                         alt="Logo Professionnel - Abdelhadi EL AZHARI AMAZZALE"
+                         id="profileLogo">
+                </div>
+            </div>
+            <div class="name-title">
+                <h1>Abdelhadi EL AZHARI AMAZZALE</h1>
+                <h2>Administrateur Infrastructures Sécurisées</h2>
+                <p class="tagline">Spécialiste en déploiement, gestion et maintenance d'infrastructures informatiques sécurisées avec une solide expertise technique et une approche proactive de la sécurité.</p>
+                <div class="header-actions">
+                    <div class="availability-badge">
+                        <i class="far fa-calendar-check"></i>
+                        <span>Recherche de stage du 27/08/2026 au 04/11/2026 à Montpellier</span>
+                    </div>
+                    <a href="https://cv389246399.wordpress.com/wp-content/uploads/2025/12/abdelhadi-el-azhari-amazzale-qrcode2-1.pdf" 
+                       class="download-cv-btn" 
+                       target="_blank"
+                       download="CV_Abdelhadi_EL_AZHARI_AMAZZALE.pdf">
+                        <i class="fas fa-download"></i>
+                        Télécharger mon CV (PDF)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Tabs Navigation -->
+    <div class="container">
+        <div class="tabs-container">
+            <div class="tabs-header">
+                <button class="tab-btn active" data-tab="about">
+                    <i class="fas fa-user-tie"></i> Profil
+                </button>
+                <button class="tab-btn" data-tab="skills">
+                    <i class="fas fa-laptop-code"></i> Compétences
+                </button>
+                <button class="tab-btn" data-tab="experience">
+                    <i class="fas fa-briefcase"></i> Expériences
+                </button>
+                <button class="tab-btn" data-tab="education">
+                    <i class="fas fa-graduation-cap"></i> Formations
+                </button>
+                <button class="tab-btn" data-tab="portfolio">
+                    <i class="fas fa-video"></i> Portfolio
+                </button>
+                <button class="tab-btn" data-tab="contact">
+                    <i class="fas fa-envelope"></i> Contact
+                </button>
+            </div>
+            
+            <div class="tabs-content">
+                <!-- About Tab -->
+                <div class="tab-pane active" id="about">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div>
+                            <h2 class="section-title">Profil Professionnel</h2>
+                            <p class="section-subtitle">Administrateur Infrastructure Sécurisée en formation</p>
+                        </div>
+                    </div>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <p>Administrateur Infrastructures Sécurisées avec une solide expérience dans le déploiement, la gestion et la maintenance d'infrastructures informatiques. Actuellement en formation d'administrateur infrastructure sécurisé, je suis à la recherche d'un stage non rémunéré à Montpellier pour une durée du 27/08/2026 au 04/11/2026.</p>
+                            <p>Mon parcours diversifié alliant gestion d'entreprise et expertise technique me permet d'aborder les problématiques de sécurité informatique avec une vision à la fois technique et stratégique. Je suis passionné par les nouvelles technologies et la veille technologique dans le domaine de la sécurité informatique.</p>
+                            <p>Je maîtrise les environnements Windows et Linux, la virtualisation, les réseaux et la sécurité des accès, avec une approche orientée vers la prévention et la résolution proactive des incidents.</p>
+                        </div>
+                        <div class="qualities">
+                            <h3><i class="fas fa-star"></i> Qualités Professionnelles</h3>
+                            <ul class="qualities-list">
+                                <li><i class="fas fa-bolt"></i> Dynamique et rigoureux</li>
+                                <li><i class="fas fa-sync-alt"></i> Grande capacité d'adaptation</li>
+                                <li><i class="fas fa-brain"></i> Apprentissage rapide</li>
+                                <li><i class="fas fa-users"></i> Excellent esprit d'équipe</li>
+                                <li><i class="fas fa-balance-scale"></i> Sens des responsabilités</li>
+                                <li><i class="fas fa-tasks"></i> Méthodique et organisé</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skills Tab -->
+                <div class="tab-pane" id="skills">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div>
+                            <h2 class="section-title">Compétences Techniques</h2>
+                            <p class="section-subtitle">Expertise en infrastructure, réseaux et sécurité</p>
+                        </div>
+                    </div>
+                    <div class="skills-container">
+                        <div class="skill-category">
+                            <h3><i class="fas fa-network-wired"></i> Infrastructure & Réseaux</h3>
+                            <ul class="skill-list">
+                                <li>Montage et câblage d'équipements en datacenter</li>
+                                <li>Câblage et soudure de fibres optiques</li>
+                                <li>Maintenance et exploitation des réseaux locaux (LAN) et téléphonie</li>
+                                <li>Administration serveurs Windows/Linux (Active Directory)</li>
+                                <li>Configuration services de déploiement et clients léger</li>
+                                <li>Supervision d'infrastructures virtualisées (VMware, Proxmox)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h3><i class="fas fa-headset"></i> Support Utilisateur</h3>
+                            <ul class="skill-list">
+                                <li>Assistance utilisateurs sur équipements numériques</li>
+                                <li>Détection/résolution incidents matériels et logiciels</li>
+                                <li>Installation/configuration OS (Windows, Linux) et logiciels</li>
+                                <li>Configuration imprimantes réseau et scanners</li>
+                                <li>Formation utilisateurs aux outils informatiques</li>
+                                <li>Gestion des tickets d'assistance</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h3><i class="fas fa-shield-alt"></i> Sécurité Informatique</h3>
+                            <ul class="skill-list">
+                                <li>Sécurisation des accès internet et distants (VPN)</li>
+                                <li>Mise en œuvre de politiques de sécurité</li>
+                                <li>Surveillance et gestion proactive des incidents de sécurité</li>
+                                <li>Analyse des vulnérabilités et patch management</li>
+                                <li>Sécurisation des infrastructures distribuées</li>
+                                <li>Audit et conformité sécurité</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h3><i class="fas fa-cloud"></i> Compétences Avancées</h3>
+                            <ul class="skill-list">
+                                <li>Gestion de pare-feu et segmentation réseau</li>
+                                <li>Administration Active Directory avancée (GPO)</li>
+                                <li>Sécurisation environnements virtualisés</li>
+                                <li>Gestion des identités et accès (IAM)</li>
+                                <li>Plan de reprise d'activité et sauvegardes</li>
+                                <li>Scripting PowerShell/Bash pour automatisation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience Tab -->
+                <div class="tab-pane" id="experience">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div>
+                            <h2 class="section-title">Expériences Professionnelles</h2>
+                            <p class="section-subtitle">Parcours professionnel diversifié</p>
+                        </div>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-date">2024 (6 mois)</span>
+                            <div class="timeline-content">
+                                <h3>Assistant de Déploiement Informatique</h3>
+                                <h4>Assurance Maladie, Montpellier</h4>
+                                <p>Participation au déploiement sécurisé d'infrastructures informatiques, gestion des configurations standardisées, support à la migration de données sensibles et contribution aux audits de sécurité interne.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <span class="timeline-date">2023 (3 mois)</span>
+                            <div class="timeline-content">
+                                <h3>Technicien Système et Réseau</h3>
+                                <h4>École Associative, Montpellier (Stage)</h4>
+                                <p>Administration de systèmes et réseaux, maintenance préventive, résolution d'incidents, support aux utilisateurs et documentation technique.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <span class="timeline-date">2020 - 2022</span>
+                            <div class="timeline-content">
+                                <h3>Président et Gérant</h3>
+                                <h4>SASU VTC, Montpellier</h4>
+                                <p>Gestion complète d'une entreprise de transport avec chauffeur, développement commercial, gestion administrative et financière, relation client.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <span class="timeline-date">2018 - 2020</span>
+                            <div class="timeline-content">
+                                <h3>Auto-entrepreneur VTC</h3>
+                                <h4>Béziers</h4>
+                                <p>Activité indépendante dans le transport de personnes, gestion autonome, relation client et développement de réseau professionnel.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <span class="timeline-date">2017 - 2018</span>
+                            <div class="timeline-content">
+                                <h3>Gérant de Centre de Télécommunication</h3>
+                                <h4>Palafrugell, Espagne</h4>
+                                <p>Gestion d'un centre de télécommunications, administration des services, gestion d'équipe et développement commercial.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Education Tab -->
+                <div class="tab-pane" id="education">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h2 class="section-title">Formations</h2>
+                            <p class="section-subtitle">Parcours de formation technique et académique</p>
+                        </div>
+                    </div>
+                    <div class="education-grid">
+                        <div class="education-card">
+                            <span class="education-date">2025 - 2026</span>
+                            <h3>Administrateur Infrastructure Sécurisée</h3>
+                            <h4>BGE Toulouse</h4>
+                            <p>Formation spécialisée en administration d'infrastructures sécurisées, sécurité réseau, gestion des identités et conformité.</p>
+                        </div>
+                        
+                        <div class="education-card">
+                            <span class="education-date">2023</span>
+                            <h3>Data Centre et Objets Connectés</h3>
+                            <h4>CMA de l'Hérault, Montpellier</h4>
+                            <p>Formation aux technologies des data centers et à l'Internet des Objets (IoT).</p>
+                        </div>
+                        
+                        <div class="education-card">
+                            <span class="education-date">2022 - 2023</span>
+                            <h3>Technicien Supérieur Systèmes et Réseaux</h3>
+                            <h4>BGE Montpellier</h4>
+                            <p>Titre professionnel de niveau 5, spécialisation en administration systèmes et réseaux.</p>
+                        </div>
+                        
+                        <div class="education-card">
+                            <span class="education-date">1996</span>
+                            <h3>Diplôme d'Analyse Programmeur</h3>
+                            <h4>École EURELEC, Marrakech, Maroc</h4>
+                            <p>Formation en informatique industrielle et développement logiciel.</p>
+                        </div>
+                        
+                        <div class="education-card">
+                            <span class="education-date">1995</span>
+                            <h3>Licence en Physique, option Électronique</h3>
+                            <h4>Faculté des Sciences, Marrakech, Maroc</h4>
+                            <p>Formation fondamentale en physique avec spécialisation en électronique.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Tab -->
+                <div class="tab-pane" id="portfolio">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div>
+                            <h2 class="section-title">Portfolio Vidéo</h2>
+                            <p class="section-subtitle">Démonstrations de mes compétences techniques</p>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-bottom: 2rem; color: var(--dark-color); opacity: 0.9;">
+                        Découvrez mes démonstrations techniques et projets qui illustrent mes compétences en administration d'infrastructures sécurisées. Ces vidéos montrent mes réalisations pratiques dans différents domaines techniques.
+                    </p>
+                    
+                    <div class="portfolio-container" id="videoPortfolio">
+                        <!-- Vidéo 1 - Administration Active Directory -->
+                        <div class="video-card" data-video-id="1">
+                            <div class="video-player">
+                                <img src="https://via.placeholder.com/350x200/1e3a8a/ffffff?text=Active+Directory+Demo" 
+                                     alt="Administration Active Directory" 
+                                     class="video-thumbnail">
+                                <div class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Administration Active Directory</h3>
+                                <p class="video-description">
+                                    Démonstration de la configuration et gestion d'Active Directory, création d'utilisateurs, groupes et politiques GPO.
+                                </p>
+                                <div class="video-tags">
+                                    <span class="video-tag">Windows Server</span>
+                                    <span class="video-tag">Active Directory</span>
+                                    <span class="video-tag">GPO</span>
+                                    <span class="video-tag">Administration</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Vidéo 2 - Virtualisation VMware -->
+                        <div class="video-card" data-video-id="2">
+                            <div class="video-player">
+                                <img src="https://via.placeholder.com/350x200/0ea5e9/ffffff?text=VMware+ESXi" 
+                                     alt="Virtualisation VMware" 
+                                     class="video-thumbnail">
+                                <div class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Virtualisation avec VMware ESXi</h3>
+                                <p class="video-description">
+                                    Configuration d'un environnement virtualisé, création de machines virtuelles et gestion des ressources.
+                                </p>
+                                <div class="video-tags">
+                                    <span class="video-tag">Virtualisation</span>
+                                    <span class="video-tag">VMware</span>
+                                    <span class="video-tag">ESXi</span>
+                                    <span class="video-tag">Serveurs</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Vidéo 3 - Sécurité Réseau -->
+                        <div class="video-card" data-video-id="3">
+                            <div class="video-player">
+                                <img src="https://via.placeholder.com/350x200/10b981/ffffff?text=S%C3%A9curit%C3%A9+R%C3%A9seau" 
+                                     alt="Sécurité Réseau" 
+                                     class="video-thumbnail">
+                                <div class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Configuration Sécurité Réseau</h3>
+                                <p class="video-description">
+                                    Mise en place de règles de pare-feu, segmentation réseau et sécurisation des accès distants.
+                                </p>
+                                <div class="video-tags">
+                                    <span class="video-tag">Sécurité</span>
+                                    <span class="video-tag">Réseau</span>
+                                    <span class="video-tag">Pare-feu</span>
+                                    <span class="video-tag">VPN</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Vidéo 4 - Scripting PowerShell -->
+                        <div class="video-card" data-video-id="4">
+                            <div class="video-player">
+                                <img src="https://via.placeholder.com/350x200/f59e0b/ffffff?text=PowerShell" 
+                                     alt="Scripting PowerShell" 
+                                     class="video-thumbnail">
+                                <div class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Automatisation avec PowerShell</h3>
+                                <p class="video-description">
+                                    Scripts PowerShell pour l'automatisation des tâches d'administration système.
+                                </p>
+                                <div class="video-tags">
+                                    <span class="video-tag">PowerShell</span>
+                                    <span class="video-tag">Scripting</span>
+                                    <span class="video-tag">Automatisation</span>
+                                    <span class="video-tag">Windows</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Vidéo 5 - Sauvegarde Veeam -->
+                        <div class="video-card" data-video-id="5">
+                            <div class="video-player">
+                                <img src="https://via.placeholder.com/350x200/8b5cf6/ffffff?text=Veeam+Backup" 
+                                     alt="Sauvegarde Veeam" 
+                                     class="video-thumbnail">
+                                <div class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Sauvegarde avec Veeam</h3>
+                                <p class="video-description">
+                                    Configuration d'une solution de sauvegarde et restauration avec Veeam Backup & Replication.
+                                </p>
+                                <div class="video-tags">
+                                    <span class="video-tag">Sauvegarde</span>
+                                    <span class="video-tag">Veeam</span>
+                                    <span class="video-tag">Restauration</span>
+                                    <span class="video-tag">PRA</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Vidéo 6 - Linux Administration -->
+                        <div class="video-card" data-video-id="6">
+                            <div class="video-player">
+                                <img src="https://via.placeholder.com/350x200/ef4444/ffffff?text=Linux+Admin" 
+                                     alt="Linux Administration" 
+                                     class="video-thumbnail">
+                                <div class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Administration Linux</h3>
+                                <p class="video-description">
+                                    Configuration de services Linux, gestion des utilisateurs et des permissions.
+                                </p>
+                                <div class="video-tags">
+                                    <span class="video-tag">Linux</span>
+                                    <span class="video-tag">Ubuntu</span>
+                                    <span class="video-tag">CentOS</span>
+                                    <span class="video-tag">Administration</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Instructions pour ajouter des vidéos -->
+                    <div class="instructions" style="background: #f0f9ff; padding: 1.5rem; border-radius: var(--border-radius); margin-top: 3rem; border-left: 4px solid var(--accent-color);">
+                        <h4 style="color: var(--primary-color); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-info-circle"></i> Comment ajouter vos propres vidéos ?
+                        </h4>
+                        <ol style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Téléversez vos vidéos sur GitHub dans votre dépôt</li>
+                            <li>Obtenez l'URL directe de chaque vidéo (format MP4)</li>
+                            <li>Modifiez le tableau <code>videos</code> dans le JavaScript ci-dessous</li>
+                            <li>Ajoutez vos propres images en remplaçant les placeholders</li>
+                        </ol>
+                        <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                            <strong>Conseil :</strong> Utilisez des vignettes personnalisées pour chaque vidéo (taille recommandée : 350x200 pixels)
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Contact Tab -->
+                <div class="tab-pane" id="contact">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h2 class="section-title">Contact & Réseaux</h2>
+                            <p class="section-subtitle">Disponible pour un stage en administration infrastructure sécurisée</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-container">
+                        <div class="contact-info">
+                            <div class="contact-card">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h3>Localisation</h3>
+                                    <p>Montpellier, Occitanie, France</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-card">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h3>Téléphone</h3>
+                                    <p>07 51 17 16 24</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-card">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h3>Email</h3>
+                                    <p>abdelbge2022@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-card">
+                                <div class="contact-icon">
+                                    <i class="fas fa-id-card"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h3>Permis</h3>
+                                    <p>Permis B (Voiture) & Permis D (Transport)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="social-section">
+                                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Réseaux Professionnels</h3>
+                                <div class="social-links">
+                                    <a href="#" class="social-link" title="LinkedIn">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="https://github.com/abdelbge2023" class="social-link" title="GitHub" target="_blank">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://raw.githubusercontent.com/abdelbge2023/CV_Demande_de_stage/main/CV_Abdelhadi_EL_AZHARI_AMAZZALE.pdf" class="social-link" title="CV PDF" target="_blank">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Form -->
+                        <div class="form-container">
+                            <h3><i class="fas fa-paper-plane"></i> Formulaire de Contact</h3>
+                            
+                            <!-- Message d'alerte -->
+                            <div id="form-message" style="display: none;"></div>
+                            
+                            <form id="contactForm">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="name">Nom complet *</label>
+                                        <input type="text" id="name" name="name" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="company">Entreprise / Organisation</label>
+                                        <input type="text" id="company" name="company" class="form-control">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="email">Email *</label>
+                                        <input type="email" id="email" name="email" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Téléphone</label>
+                                        <input type="tel" id="phone" name="phone" class="form-control">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="subject">Sujet *</label>
+                                    <select id="subject" name="subject" class="form-control" required>
+                                        <option value="">Sélectionnez un sujet</option>
+                                        <option value="stage">Proposition de stage</option>
+                                        <option value="emploi">Offre d'emploi</option>
+                                        <option value="collaboration">Proposition de collaboration</option>
+                                        <option value="information">Demande d'information</option>
+                                        <option value="autre">Autre</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message">Message *</label>
+                                    <textarea id="message" name="message" class="form-control" required placeholder="Décrivez votre demande..."></textarea>
+                                </div>
+                                
+                                <!-- Customization Panel -->
+                                <div class="customization-panel">
+                                    <h4><i class="fas fa-cog"></i> Personnaliser la communication</h4>
+                                    <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">
+                                        Cochez les options que vous souhaitez activer pour votre communication :
+                                    </p>
+                                    <div class="customization-options">
+                                        <div class="custom-option">
+                                            <input type="checkbox" id="opt-cv" checked>
+                                            <label for="opt-cv">Recevoir mon CV complet</label>
+                                        </div>
+                                        <div class="custom-option">
+                                            <input type="checkbox" id="opt-portfolio">
+                                            <label for="opt-portfolio">Accès à mon portfolio</label>
+                                        </div>
+                                        <div class="custom-option">
+                                            <input type="checkbox" id="opt-certifications">
+                                            <label for="opt-certifications">Copie de mes certifications</label>
+                                        </div>
+                                        <div class="custom-option">
+                                            <input type="checkbox" id="opt-references">
+                                            <label for="opt-references">Références professionnelles</label>
+                                        </div>
+                                        <div class="custom-option">
+                                            <input type="checkbox" id="opt-disponibilite" checked>
+                                            <label for="opt-disponibilite">Mes disponibilités</label>
+                                        </div>
+                                        <div class="custom-option">
+                                            <input type="checkbox" id="opt-projets">
+                                            <label for="opt-projets">Détails de mes projets</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Champ caché pour les options -->
+                                <input type="hidden" id="selected-options" name="selected_options">
+                                
+                                <button type="submit" class="btn" id="submit-btn">
+                                    <i class="fas fa-paper-plane"></i> Envoyer le message
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal pour afficher les vidéos -->
+    <div class="video-modal" id="videoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalVideoTitle">Titre de la vidéo</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <video class="modal-video" id="modalVideo" controls>
+                    Votre navigateur ne supporte pas la lecture de vidéos.
+                </video>
+                <p class="modal-description" id="modalVideoDescription">
+                    Description de la vidéo...
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Abdelhadi EL AZHARI AMAZZALE</span>
+                </div>
+                <div class="copyright">
+                    <p>© 2025 - Administrateur Infrastructures Sécurisées</p>
+                    <p>CV en ligne professionnel - Tous droits réservés</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#" data-tab="about">Profil</a>
+                    <a href="#" data-tab="portfolio">Portfolio</a>
+                    <a href="#" data-tab="contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Configuration EmailJS
+        (function() {
+            emailjs.init("Tz5a7u_jFOL9lzel0");
+            console.log("EmailJS initialisé avec succès");
+        })();
+        
+        // ================================
+        // CONFIGURATION DES VIDÉOS
+        // ================================
+        // AJOUTEZ VOS VRAIES VIDÉOS ICI
+        const videos = [
+            {
+                id: 1,
+                title: "Administration Active Directory",
+                description: "Démonstration complète de la configuration et gestion d'Active Directory : création d'utilisateurs, groupes organisationnels, politiques de groupe (GPO) et sécurisation des accès.",
+                videoUrl: "https://votre-repo-github.com/videos/active-directory-demo.mp4", // REMPLACEZ PAR VOTRE URL
+                thumbnail: "https://via.placeholder.com/350x200/1e3a8a/ffffff?text=Active+Directory+Demo",
+                tags: ["Windows Server", "Active Directory", "GPO", "Administration", "Sécurité"]
+            },
+            {
+                id: 2,
+                title: "Virtualisation avec VMware ESXi",
+                description: "Configuration d'un environnement virtualisé VMware ESXi : installation, création de machines virtuelles, allocation des ressources et gestion des snapshots.",
+                videoUrl: "https://votre-repo-github.com/videos/vmware-esxi-demo.mp4", // REMPLACEZ PAR VOTRE URL
+                thumbnail: "https://via.placeholder.com/350x200/0ea5e9/ffffff?text=VMware+ESXi",
+                tags: ["Virtualisation", "VMware", "ESXi", "Serveurs", "Infrastructure"]
+            },
+            {
+                id: 3,
+                title: "Configuration Sécurité Réseau",
+                description: "Mise en place de règles de pare-feu avancées, segmentation réseau VLAN, configuration VPN IPSec et sécurisation des accès distants.",
+                videoUrl: "https://votre-repo-github.com/videos/securite-reseau-demo.mp4", // REMPLACEZ PAR VOTRE URL
+                thumbnail: "https://via.placeholder.com/350x200/10b981/ffffff?text=S%C3%A9curit%C3%A9+R%C3%A9seau",
+                tags: ["Sécurité", "Réseau", "Pare-feu", "VPN", "Segmentation"]
+            },
+            {
+                id: 4,
+                title: "Automatisation avec PowerShell",
+                description: "Scripts PowerShell pour automatiser les tâches d'administration : création d'utilisateurs, génération de rapports, monitoring système et déploiement logiciel.",
+                videoUrl: "https://votre-repo-github.com/videos/powershell-automation.mp4", // REMPLACEZ PAR VOTRE URL
+                thumbnail: "https://via.placeholder.com/350x200/f59e0b/ffffff?text=PowerShell",
+                tags: ["PowerShell", "Scripting", "Automatisation", "Windows", "Administration"]
+            },
+            {
+                id: 5,
+                title: "Sauvegarde avec Veeam",
+                description: "Configuration complète d'une solution de sauvegarde Veeam : planification des sauvegardes, restauration de fichiers et machines virtuelles, tests de PRA.",
+                videoUrl: "https://votre-repo-github.com/videos/veeam-backup-demo.mp4", // REMPLACEZ PAR VOTRE URL
+                thumbnail: "https://via.placeholder.com/350x200/8b5cf6/ffffff?text=Veeam+Backup",
+                tags: ["Sauvegarde", "Veeam", "Restauration", "PRA", "Sécurité"]
+            },
+            {
+                id: 6,
+                title: "Administration Linux",
+                description: "Configuration de services Linux : Apache, Nginx, SSH, gestion des utilisateurs, permissions et sécurité sous CentOS/Ubuntu.",
+                videoUrl: "https://votre-repo-github.com/videos/linux-admin-demo.mp4", // REMPLACEZ PAR VOTRE URL
+                thumbnail: "https://via.placeholder.com/350x200/ef4444/ffffff?text=Linux+Admin",
+                tags: ["Linux", "Ubuntu", "CentOS", "Administration", "Serveurs"]
+            }
+            // AJOUTEZ D'AUTRES VIDÉOS EN COPIANT LE FORMAT CI-DESSUS
+        ];
+        
+        // ================================
+        // GESTION DU PORTFOLIO VIDÉO
+        // ================================
+        
+        // Éléments DOM
+        const videoModal = document.getElementById('videoModal');
+        const modalVideo = document.getElementById('modalVideo');
+        const modalVideoTitle = document.getElementById('modalVideoTitle');
+        const modalVideoDescription = document.getElementById('modalVideoDescription');
+        const closeModal = document.getElementById('closeModal');
+        const videoPortfolio = document.getElementById('videoPortfolio');
+        
+        // Générer dynamiquement les cartes vidéo
+        function generateVideoCards() {
+            videoPortfolio.innerHTML = '';
+            
+            videos.forEach(video => {
+                const videoCard = document.createElement('div');
+                videoCard.className = 'video-card';
+                videoCard.setAttribute('data-video-id', video.id);
+                
+                videoCard.innerHTML = `
+                    <div class="video-player">
+                        <img src="${video.thumbnail}" 
+                             alt="${video.title}" 
+                             class="video-thumbnail">
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">${video.title}</h3>
+                        <p class="video-description">${video.description}</p>
+                        <div class="video-tags">
+                            ${video.tags.map(tag => `<span class="video-tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+                
+                videoPortfolio.appendChild(videoCard);
+            });
+            
+            // Ajouter les événements après création
+            setupVideoEvents();
+        }
+        
+        // Configurer les événements vidéo
+        function setupVideoEvents() {
+            document.querySelectorAll('.video-card').forEach(card => {
+                const playBtn = card.querySelector('.play-btn');
+                const videoId = parseInt(card.getAttribute('data-video-id'));
+                
+                playBtn.addEventListener('click', () => {
+                    openVideoModal(videoId);
+                });
+            });
+        }
+        
+        // Ouvrir la modal vidéo
+        function openVideoModal(videoId) {
+            const video = videos.find(v => v.id === videoId);
+            
+            if (video) {
+                modalVideoTitle.textContent = video.title;
+                modalVideoDescription.textContent = video.description;
+                modalVideo.src = video.videoUrl;
+                
+                videoModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Empêcher le scroll
+                
+                // Jouer la vidéo automatiquement
+                setTimeout(() => {
+                    modalVideo.play().catch(e => console.log("Auto-play bloqué:", e));
+                }, 300);
+            }
+        }
+        
+        // Fermer la modal
+        closeModal.addEventListener('click', () => {
+            videoModal.classList.remove('active');
+            modalVideo.pause();
+            modalVideo.currentTime = 0;
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Fermer la modal en cliquant à l'extérieur
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                videoModal.classList.remove('active');
+                modalVideo.pause();
+                modalVideo.currentTime = 0;
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Fermer avec la touche Échap
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+                videoModal.classList.remove('active');
+                modalVideo.pause();
+                modalVideo.currentTime = 0;
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Tab Navigation System
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+        
+        // Function to switch tabs
+        function switchTab(tabId) {
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanes.forEach(pane => pane.classList.remove('active'));
+            
+            const activeBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+            const activePane = document.getElementById(tabId);
+            
+            if (activeBtn && activePane) {
+                activeBtn.classList.add('active');
+                activePane.classList.add('active');
+                
+                sessionStorage.setItem('activeTab', tabId);
+                history.replaceState(null, null, `#${tabId}`);
+            }
+        }
+        
+        // Add click event to tab buttons
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                switchTab(tabId);
+            });
+        });
+        
+        // Check URL hash on load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Générer les cartes vidéo
+            generateVideoCards();
+            
+            const hash = window.location.hash.substring(1);
+            const savedTab = sessionStorage.getItem('activeTab');
+            
+            if (hash && document.getElementById(hash)) {
+                switchTab(hash);
+            } else if (savedTab && document.getElementById(savedTab)) {
+                switchTab(savedTab);
+            } else {
+                switchTab('about');
+            }
+        });
+        
+        // Fonction pour collecter les options sélectionnées
+        function collectOptions() {
+            const options = [];
+            const optionNames = {
+                'opt-cv': 'CV complet',
+                'opt-portfolio': 'Accès au portfolio',
+                'opt-certifications': 'Copies de certifications',
+                'opt-references': 'Références professionnelles',
+                'opt-disponibilite': 'Disponibilités',
+                'opt-projets': 'Détails de mes projets'
+            };
+            
+            document.querySelectorAll('.customization-options input[type="checkbox"]:checked').forEach(checkbox => {
+                if (optionNames[checkbox.id]) {
+                    options.push(optionNames[checkbox.id]);
+                }
+            });
+            
+            return options.length > 0 ? options.join(', ') : 'Aucune option sélectionnée';
+        }
+        
+        // Fonction pour afficher les messages du formulaire
+        function showMessage(type, text) {
+            const formMessage = document.getElementById('form-message');
+            formMessage.innerHTML = `
+                <div class="alert alert-${type}">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                    <span>${text}</span>
+                </div>
+            `;
+            formMessage.style.display = 'block';
+            
+            formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            if (type === 'success') {
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            }
+        }
+        
+        // Gérer la soumission du formulaire avec EmailJS
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            
+            // Collecter les données du formulaire
+            const formData = {
+                name: document.getElementById('name').value,
+                company: document.getElementById('company').value || 'Non spécifié',
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value || 'Non spécifié',
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+                selected_options: collectOptions(),
+                date: new Date().toLocaleString('fr-FR')
+            };
+            
+            // Validation des champs requis
+            if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+                showMessage('error', 'Veuillez remplir tous les champs obligatoires (*)');
+                return;
+            }
+            
+            // Désactiver le bouton pendant l'envoi
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+            
+            // Configuration EmailJS
+            const emailjsConfig = {
+                service_id: "service_4ve8joa",
+                template_id: "template_xxxxxxxx", // ⚠️ À REMPLACER AVEC VOTRE TEMPLATE ID
+                user_id: "Tz5a7u_jFOL9lzel0"
+            };
+            
+            // Envoyer l'email via EmailJS
+            emailjs.send(emailjsConfig.service_id, emailjsConfig.template_id, formData)
+                .then(function(response) {
+                    console.log('SUCCÈS!', response.status, response.text);
+                    showMessage('success', 'Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.');
+                    
+                    // Réinitialiser le formulaire
+                    document.getElementById('contactForm').reset();
+                    
+                    // Réinitialiser les cases à cocher
+                    document.getElementById('opt-cv').checked = true;
+                    document.getElementById('opt-disponibilite').checked = true;
+                    document.getElementById('opt-portfolio').checked = false;
+                    document.getElementById('opt-certifications').checked = false;
+                    document.getElementById('opt-references').checked = false;
+                    document.getElementById('opt-projets').checked = false;
+                })
+                .catch(function(error) {
+                    console.error('ÉCHEC...', error);
+                    showMessage('error', 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer.');
+                    
+                    // Alternative: mailto
+                    const mailtoBody = `
+Nom: ${formData.name}
+Entreprise: ${formData.company}
+Email: ${formData.email}
+Téléphone: ${formData.phone}
+Sujet: ${formData.subject}
+
+Message:
+${formData.message}
+
+Options: ${formData.selected_options}
+                    `;
+                    
+                    const mailtoUrl = `mailto:abdelbge2022@gmail.com?subject=${encodeURIComponent('Contact CV: ' + formData.subject)}&body=${encodeURIComponent(mailtoBody)}`;
+                    
+                    showMessage('info', `Problème technique. <a href="${mailtoUrl}" style="color: var(--primary-color); text-decoration: underline;">Cliquez ici pour m'envoyer un email directement</a>.`);
+                })
+                .finally(function() {
+                    // Réactiver le bouton
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer le message';
+                });
+        });
+        
+        // Footer links to switch tabs
+        document.querySelectorAll('.footer-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const tabId = this.getAttribute('data-tab');
+                if (tabId) {
+                    switchTab(tabId);
+                    document.querySelector('.tabs-container').scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll for tab panes
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all tab panes for animation
+        tabPanes.forEach(pane => {
+            pane.style.opacity = '0';
+            pane.style.transform = 'translateY(30px)';
+            pane.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(pane);
+        });
+        
+        // Auto-populate subject if coming from a specific context
+        const urlParams = new URLSearchParams(window.location.search);
+        const context = urlParams.get('context');
+        
+        if (context) {
+            const subjectMap = {
+                'stage': 'Proposition de stage',
+                'emploi': 'Offre d\'emploi',
+                'collaboration': 'Proposition de collaboration'
+            };
+            
+            if (subjectMap[context]) {
+                setTimeout(() => {
+                    switchTab('contact');
+                    const subjectSelect = document.getElementById('subject');
+                    if (subjectSelect) {
+                        subjectSelect.value = context;
+                    }
+                }, 100);
+            }
+        }
+        
+        // Test EmailJS connection
+        window.addEventListener('load', function() {
+            if (typeof emailjs !== 'undefined') {
+                console.log('EmailJS est chargé et prêt');
+            } else {
+                console.error('EmailJS n\'est pas chargé');
+            }
+        });
+    </script>
+</body>
+</html>
