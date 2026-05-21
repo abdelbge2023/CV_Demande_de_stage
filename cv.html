@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdelhadi EL AZHARI - Administrateur Infrastructure Sécurisée</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 100%), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="1200" height="400" fill="%23667eea"/><rect width="1200" height="400" fill="url(%23grid)"/><circle cx="100" cy="50" r="30" fill="%23764ba2" opacity="0.3"/><circle cx="1100" cy="350" r="50" fill="%23667eea" opacity="0.2"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                transparent 30%,
+                rgba(255, 255, 255, 0.03) 30%,
+                rgba(255, 255, 255, 0.03) 60%,
+                transparent 60%);
+            pointer-events: none;
+        }
+        
+        header > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+        }
+        
+        header .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+        
+        header .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+        
+        header .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.3s;
+        }
+        
+        header .contact-info a:hover {
+            opacity: 0.8;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 50px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h2 {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #667eea;
+            display: inline-block;
+        }
+        
+        .section h3 {
+            font-size: 1.2em;
+            color: #764ba2;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .experience-item, .formation-item {
+            background: #f8f9ff;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .experience-item:hover, .formation-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+        }
+        
+        .experience-item .title {
+            font-weight: 700;
+            color: #764ba2;
+            font-size: 1.1em;
+        }
+        
+        .experience-item .company {
+            color: #667eea;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        
+        .experience-item .date {
+            color: #999;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        .experience-item .description {
+            color: #555;
+            margin-top: 10px;
+            font-size: 0.95em;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-align: center;
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: transform 0.3s;
+        }
+        
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+        
+        .qualities {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        .quality-item {
+            background: #fff3cd;
+            padding: 12px;
+            border-left: 3px solid #ffc107;
+            border-radius: 5px;
+            font-size: 0.95em;
+            color: #856404;
+        }
+        
+        .objective {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            margin: 30px 0;
+        }
+        
+        .objective p {
+            color: #333;
+            line-height: 1.8;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+                padding: 30px 20px;
+            }
+            
+            header {
+                padding: 40px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            header .contact-info {
+                gap: 15px;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+        }
+        
+        footer {
+            background: #f5f5f5;
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .btn-download {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: transform 0.3s;
+            font-weight: 600;
+        }
+        
+        .btn-download:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Abdelhadi EL AZHARI AMAZZALE</h1>
+            <div class="subtitle">Administrateur Infrastructure Sécurisée</div>
+            <div class="contact-info">
+                <a href="tel:+33751171624"><i class="fas fa-phone"></i> 07 51 17 16 24</a>
+                <a href="mailto:abdelbge2022@gmail.com"><i class="fas fa-envelope"></i> abdelbge2022@gmail.com</a>
+                <a href="https://linkedin.com/in/abdelhadi-e-462581240" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/abdelbge2023" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+            <div style="margin-top: 15px; font-size: 0.95em;">📍 Montpellier, Occitanie, France</div>
+        </header>
+        
+        <!-- Content -->
+        <div class="content">
+            <!-- Section visuelle avec images informatiques -->
+            <div style="grid-column: 1 / -1; margin-bottom: 30px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 10px; text-align: center; color: white; box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);">
+                        <i class="fas fa-network-wired" style="font-size: 3em; margin-bottom: 10px; display: block;"></i>
+                        <h4 style="font-size: 1.1em;">Infrastructure</h4>
+                        <p style="font-size: 0.9em; opacity: 0.9;">Réseaux & Systèmes</p>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 30px; border-radius: 10px; text-align: center; color: white; box-shadow: 0 5px 15px rgba(245, 87, 108, 0.2);">
+                        <i class="fas fa-lock" style="font-size: 3em; margin-bottom: 10px; display: block;"></i>
+                        <h4 style="font-size: 1.1em;">Sécurité</h4>
+                        <p style="font-size: 0.9em; opacity: 0.9;">Protection & Conformité</p>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 30px; border-radius: 10px; text-align: center; color: white; box-shadow: 0 5px 15px rgba(79, 172, 254, 0.2);">
+                        <i class="fas fa-cloud" style="font-size: 3em; margin-bottom: 10px; display: block;"></i>
+                        <h4 style="font-size: 1.1em;">Virtualisation</h4>
+                        <p style="font-size: 0.9em; opacity: 0.9;">Cloud & Datacenters</p>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); padding: 30px; border-radius: 10px; text-align: center; color: white; box-shadow: 0 5px 15px rgba(67, 233, 123, 0.2);">
+                        <i class="fas fa-cog" style="font-size: 3em; margin-bottom: 10px; display: block;"></i>
+                        <h4 style="font-size: 1.1em;">Automatisation</h4>
+                        <p style="font-size: 0.9em; opacity: 0.9;">Scripting & DevOps</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Left Column -->
+            <div>
+                <!-- Profil -->
+                <section class="section">
+                    <h2><i class="fas fa-user-circle" style="color: #667eea; margin-right: 10px;"></i>Profil</h2>
+                    <p style="color: #555; line-height: 1.8;">
+                        Spécialiste en déploiement, gestion et maintenance d'infrastructures informatiques sécurisées. Ma solide expertise technique et mon approche proactive de la sécurité me permettent d'aborder les problématiques informatiques avec une vision à la fois technique et stratégique.
+                    </p>
+                    <p style="color: #555; line-height: 1.8; margin-top: 15px;">
+                        Actuellement en formation d'administrateur infrastructure sécurisé chez <strong>BGE Toulouse</strong>, je suis passionné par les nouvelles technologies et la veille technologique dans le domaine de la cybersécurité.
+                    </p>
+                </section>
+                
+                <!-- Qualités -->
+                <section class="section">
+                    <h2><i class="fas fa-star" style="color: #ffc107; margin-right: 10px;"></i>Qualités</h2>
+                    <div class="qualities">
+                        <div class="quality-item">✓ Dynamique & rigoureux</div>
+                        <div class="quality-item">✓ Grande adaptabilité</div>
+                        <div class="quality-item">✓ Apprentissage rapide</div>
+                        <div class="quality-item">✓ Esprit d'équipe</div>
+                        <div class="quality-item">✓ Méthodique & organisé</div>
+                        <div class="quality-item">✓ Proactivité</div>
+                    </div>
+                </section>
+                
+                <!-- Formations -->
+                <section class="section">
+                    <h2><i class="fas fa-graduation-cap" style="color: #667eea; margin-right: 10px;"></i>Formations</h2>
+                    <div class="formation-item">
+                        <div class="title">Administrateur Infrastructure Sécurisée</div>
+                        <div class="company">BGE Toulouse</div>
+                        <div class="date">2025 - 2026</div>
+                    </div>
+                    <div class="formation-item">
+                        <div class="title">Technicien Supérieur Systèmes et Réseaux</div>
+                        <div class="company">BGE Montpellier</div>
+                        <div class="date">2022 - 2023 | Titre Professionnel Niveau 5</div>
+                    </div>
+                    <div class="formation-item">
+                        <div class="title">Data Centre et Objets Connectés</div>
+                        <div class="company">CMA de l'Hérault, Montpellier</div>
+                        <div class="date">2023</div>
+                    </div>
+                    <div class="formation-item">
+                        <div class="title">Licence Physique, option Électronique</div>
+                        <div class="company">Faculté des Sciences, Marrakech</div>
+                        <div class="date">1995</div>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Right Column -->
+            <div>
+                <!-- Compétences Techniques -->
+                <section class="section">
+                    <h2><i class="fas fa-tools" style="color: #667eea; margin-right: 10px;"></i>Compétences Techniques</h2>
+                    
+                    <h3><i class="fas fa-server" style="color: #667eea; margin-right: 10px;"></i>Infrastructure & Réseaux</h3>
+                    <div class="skills-grid">
+                        <div class="skill-tag">🖥️ Windows Server</div>
+                        <div class="skill-tag">🐧 Linux</div>
+                        <div class="skill-tag">🔐 Active Directory</div>
+                        <div class="skill-tag">☁️ VMware ESXi</div>
+                        <div class="skill-tag">⚙️ Proxmox</div>
+                        <div class="skill-tag">🏢 Datacenter</div>
+                        <div class="skill-tag">📡 Fibre Optique</div>
+                        <div class="skill-tag">🌐 LAN/WAN</div>
+                    </div>
+                    
+                    <h3><i class="fas fa-shield-alt" style="color: #764ba2; margin-right: 10px;"></i>Sécurité Informatique</h3>
+                    <div class="skills-grid">
+                        <div class="skill-tag">🔒 VPN</div>
+                        <div class="skill-tag">🚨 Pare-feu</div>
+                        <div class="skill-tag">🛡️ Segmentation Réseau</div>
+                        <div class="skill-tag">🔍 Audit Sécurité</div>
+                        <div class="skill-tag">📋 ISO 27001</div>
+                        <div class="skill-tag">👤 IAM</div>
+                        <div class="skill-tag">⚡ Patch Management</div>
+                        <div class="skill-tag">🚨 Incident Response</div>
+                    </div>
+                    
+                    <h3><i class="fas fa-cogs" style="color: #667eea; margin-right: 10px;"></i>Automatisation & DevOps</h3>
+                    <div class="skills-grid">
+                        <div class="skill-tag">📜 PowerShell</div>
+                        <div class="skill-tag">💻 Bash</div>
+                        <div class="skill-tag">💾 Veeam Backup</div>
+                        <div class="skill-tag">⚡ Scripting</div>
+                        <div class="skill-tag">👁️ Supervision</div>
+                        <div class="skill-tag">🔄 PRA</div>
+                    </div>
+                </section>
+                
+                <!-- Expériences -->
+                <section class="section">
+                    <h2><i class="fas fa-briefcase" style="color: #764ba2; margin-right: 10px;"></i>Expériences</h2>
+                    <div class="experience-item">
+                        <div class="title"><i class="fas fa-laptop-code" style="color: #667eea; margin-right: 8px;"></i>Assistant de Déploiement Informatique</div>
+                        <div class="company">Assurance Maladie, Montpellier</div>
+                        <div class="date">2024 | 6 mois</div>
+                        <div class="description">Déploiement sécurisé d'infrastructures, gestion de configurations, migration de données sensibles, audits de sécurité.</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="title"><i class="fas fa-server" style="color: #667eea; margin-right: 8px;"></i>Technicien Système et Réseau</div>
+                        <div class="company">École Associative, Montpellier (Stage)</div>
+                        <div class="date">2023 | 3 mois</div>
+                        <div class="description">Administration systèmes/réseaux, maintenance préventive, résolution d'incidents, support utilisateurs.</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="title"><i class="fas fa-chart-line" style="color: #764ba2; margin-right: 8px;"></i>Président et Gérant</div>
+                        <div class="company">SASU VTC, Montpellier</div>
+                        <div class="date">2020 - 2022</div>
+                        <div class="description">Gestion complète d'entreprise, développement commercial, administration financière.</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="title"><i class="fas fa-car" style="color: #667eea; margin-right: 8px;"></i>Auto-entrepreneur VTC</div>
+                        <div class="company">Béziers</div>
+                        <div class="date">2018 - 2020</div>
+                        <div class="description">Transport de personnes, gestion autonome, développement réseau professionnel.</div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <!-- Objectif -->
+        <div style="padding: 0 50px; margin-bottom: 40px;">
+            <div class="objective">
+                <h3 style="color: #667eea; margin-bottom: 15px;">📌 Objectif Professionnel</h3>
+                <p>Passionné par les infrastructures sécurisées et l'innovation technologique, je recherche à rejoindre une équipe dynamique pour approfondir mon expertise en administration d'infrastructures, virtualisation et gestion des incidents de sécurité. Disponible pour des opportunités de stage, collaboration ou intégration.</p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <p>© 2025 Abdelhadi EL AZHARI AMAZZALE | Administrateur Infrastructure Sécurisée</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">Montpellier, France | <a href="https://abdelbge2023.github.io/CV_Demande_de_stage/" style="color: #667eea; text-decoration: none;">Voir CV en ligne</a></p>
+        </footer>
+    </div>
+</body>
+</html>
